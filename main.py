@@ -26,9 +26,15 @@ class PolynomialMenu:
         print("Segundo polinomio ingresado:")
         self.arbol2.print_in_order()
 
-    def opcion_2(self):
-        # Aquí podrías implementar adición y sustracción
-        print("Adición y Sustracción de polinomios (No implementado)")
+    def sumar_polinomios(self):
+        suma_arbol = self.arbol1.sumar_arboles(self.arbol2)
+        print("Resultado de la suma:")
+        suma_arbol.print_in_order()
+
+    def restar_polinomios(self):
+        resta_arbol = self.arbol1.restar_arboles(self.arbol2)
+        print("Resultado de la resta:")
+        resta_arbol.print_in_order()
 
     def opcion_3(self):
         # Aquí podrías implementar la evaluación de polinomios
@@ -48,9 +54,33 @@ class PolynomialMenu:
                 if opcion == 1:
                     self.ingresar_polinomio()
                 elif opcion == 2:
-                    self.opcion_2()
+                    print("\nMENU DE OPERACIONES POLINOMIOS")
+                    print("1. Sumar")
+                    print("2. Restar")
+                    print("3. Salir")
+
+                    seleccion = 0
+                    while seleccion != 4:
+                        try:
+                            seleccion = int(input("Selecciona una opción (1-3): "))
+                            if seleccion == 1:
+                                self.sumar_polinomios()
+                            elif seleccion == 2:
+                                self.restar_polinomios()
+                            elif seleccion == 3:
+                                print('Saliendo...')
+                                break
+                            else:
+                                print("Opción no válida, por favor intenta de nuevo.")
+                        except ValueError:
+                            print("Por favor, ingresa un número válido.")
                 elif opcion == 3:
-                    self.opcion_3()
+                    # Después de ingresar los polinomios
+                    x_value = float(input("Ingresa el valor de x para evaluar los polinomios: "))
+                    result_poly1 = self.arbol1.evaluate(x_value)
+                    result_poly2 = self.arbol2.evaluate(x_value)      
+                    print("Resultado de evaluar el primer polinomio:", result_poly1)
+                    print("Resultado de evaluar el segundo polinomio:", result_poly2)
                 elif opcion == 4:
                     print('Saliendo del Programa...')
                     break
