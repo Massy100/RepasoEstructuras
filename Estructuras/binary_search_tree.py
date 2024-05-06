@@ -162,3 +162,6 @@ class BinarySearchTree:
             result += self._evaluate_recursive(node.left, x)
             result += self._evaluate_recursive(node.right, x)
             return result
+        
+    def clear(self):
+        self.__root = None

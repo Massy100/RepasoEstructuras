@@ -36,21 +36,18 @@ class PolynomialMenu:
         print("Resultado de la resta:")
         resta_arbol.print_in_order()
 
-    def opcion_3(self):
-        # Aquí podrías implementar la evaluación de polinomios
-        print("Evaluación de polinomios (No implementado)")
-
     def mostrar_menu(self):
         print("\nMENU DE POLINOMIOS")
         print("1. Ingresar Componentes Polinomios")
         print("2. Adiccion y Sustraccion")
         print("3. Evaluar Polinomios")
-        print("4. Salir")
+        print("4. Reiniciar Polinomios (Limpiar Estructuras)")
+        print("5. Salir")
 
         opcion = 0
-        while opcion != 4:
+        while opcion != 5:
             try:
-                opcion = int(input("Selecciona una opción (1-4): "))
+                opcion = int(input("Selecciona una opción (1-5): "))
                 if opcion == 1:
                     self.ingresar_polinomio()
                 elif opcion == 2:
@@ -75,13 +72,17 @@ class PolynomialMenu:
                         except ValueError:
                             print("Por favor, ingresa un número válido.")
                 elif opcion == 3:
-                    # Después de ingresar los polinomios
+                    # Ingresar los polinomios
                     x_value = float(input("Ingresa el valor de x para evaluar los polinomios: "))
                     result_poly1 = self.arbol1.evaluate(x_value)
                     result_poly2 = self.arbol2.evaluate(x_value)      
                     print("Resultado de evaluar el primer polinomio:", result_poly1)
                     print("Resultado de evaluar el segundo polinomio:", result_poly2)
                 elif opcion == 4:
+                    self.arbol1.clear()
+                    self.arbol2.clear()    
+                    print("Memoria vaciada, puede ingresar nuevos polinomios.")
+                elif opcion == 5:
                     print('Saliendo del Programa...')
                     break
                 else:
